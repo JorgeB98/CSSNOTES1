@@ -1,0 +1,177 @@
+<!CSS notes html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Success Specialist Notes</title>
+    <style>
+        body { 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            background-color: #f0f0f0; 
+            color: #333; 
+            padding: 20px; 
+            margin: 0 auto; 
+            max-width: 600px; 
+            line-height: 1.6;
+        }
+        .header { 
+            text-align: center; 
+            margin-bottom: 20px; 
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .header h2 { 
+            color: #333; 
+            font-weight: 600; 
+            display: inline-block; 
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .logo { 
+            vertical-align: middle; 
+            width: 100px; 
+            display: inline-block;
+        }
+        .section { 
+            background-color: #fff; 
+            padding: 20px; 
+            margin-top: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+            border: 1px solid #ddd;
+        }
+        label { 
+            display: block; 
+            margin-bottom: 8px; 
+            font-weight: 600; 
+            color: #555; 
+        }
+        input, textarea, select { 
+            width: calc(100% - 20px); 
+            padding: 10px; 
+            margin-bottom: 15px; 
+            border-radius: 4px; 
+            border: 1px solid #ddd; 
+            background-color: #f9f9f9; 
+            color: #333; 
+            font-size: 14px;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        input[type="date"]::-webkit-calendar-picker-indicator { 
+            filter: invert(25%) sepia(25%) saturate(500%) hue-rotate(30deg) brightness(95%) contrast(90%); /* Cambia el icono del calendario a un tono gris suave */
+        }
+        select { 
+            text-transform: uppercase;
+        }
+        .buttons { 
+            text-align: center; 
+            margin-top: 20px; 
+        }
+        .button { 
+            background-color: #007BFF; 
+            color: #fff; 
+            padding: 10px 20px; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            font-size: 14px; 
+            margin: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover { 
+            background-color: #0056b3; 
+        }
+        .clearButton { 
+            background-color: #dc3545; 
+        }
+        .clearButton:hover { 
+            background-color: #c82333; 
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>Customer Success Specialist Notes</h2>
+        <img src="https://seeklogo.com/images/G/goto-logo-AE33794DE7-seeklogo.com.png" alt="Goto Logo" class="logo">
+    </div>
+    <div class="section">
+        <label for="contactName">Contact Name:</label>
+        <input type="text" id="contactName" placeholder="Enter Contact Name">
+        <label for="contactDate">Date:</label>
+        <input type="date" id="contactDate">
+        <label for="contactEmail">Contact Email:</label>
+        <input type="email" id="contactEmail" placeholder="Enter Contact Email">
+        <label for="contactPhone">Contact Phone Number:</label>
+        <input type="tel" id="contactPhone" placeholder="Enter Contact Phone Number">
+        <label for="ticketNumber">Ticket Number:</label>
+        <input type="text" id="ticketNumber" placeholder="Enter Ticket Number">
+        <label for="useCase">Customer’s Use Case:</label>
+        <textarea id="useCase" placeholder="Describe How Customer Uses the Product"></textarea>
+        <label for="product">Product:</label>
+        <input type="text" id="product" placeholder="Enter Product Name">
+        
+        <!-- Nuevo menú desplegable para Type of Project -->
+        <label for="projectType">Type of Project:</label>
+        <select id="projectType">
+            <option value="CC CHURN">CC CHURN</option>
+            <option value="ACTIVATED WINBACK">ACTIVATED WINBACK</option>
+            <option value="BOUNCED EMAIL CAMPAIGN">BOUNCED EMAIL CAMPAIGN</option>
+            <option value="rNPS">rNPS</option>
+            <option value="TNPs">TNPs</option>
+            <option value="RESCUE LIFECYCLE">RESCUE LIFECYCLE</option>
+            <option value="CENTRAL LIFECYCLE">CENTRAL LIFECYCLE</option>
+        </select>
+    </div>
+    <div class="section">
+        <label for="callPurpose">Purpose of the Call:</label>
+        <textarea id="callPurpose" placeholder="Enter Purpose of the Call"></textarea>
+    </div>
+    <div class="section">
+        <label for="followUpEmail">Follow Up Email?</label>
+        <select id="followUpEmail">
+            <option value="YES">YES</option>
+            <option value="NO">NO</option>
+        </select>
+        <label for="nextSteps">Next Steps:</label>
+        <textarea id="nextSteps" placeholder="Describe Next Steps"></textarea>
+        <label for="followUpDate">Date for Next Follow Up:</label>
+        <input type="date" id="followUpDate">
+    </div>
+    <div class="section">
+        <label for="callOutcome">Outcome of the Call:</label>
+        <textarea id="callOutcome" placeholder="Describe the Outcome of the Call"></textarea>
+    </div>
+    <div class="buttons">
+        <button class="button" onclick="copyToClipboard()">Copy</button>
+        <button class="button clearButton" onclick="refreshPage()">Clear</button>
+    </div>
+    <script>
+        document.getElementById('contactDate').valueAsDate = new Date();
+        function copyToClipboard() {
+            var content = 'Contact Name and Date: ' + document.getElementById('contactName').value + ' - ' + document.getElementById('contactDate').value + '\n\n';
+            content += 'Contact Email: ' + document.getElementById('contactEmail').value + '\n\n';
+            content += 'Contact Phone Number: ' + document.getElementById('contactPhone').value + '\n\n';
+            content += 'Ticket Number: ' + document.getElementById('ticketNumber').value + '\n\n';
+            content += 'Customer’s Use Case: ' + document.getElementById('useCase').value + '\n\n';
+            content += 'Product: ' + document.getElementById('product').value + '\n\n';
+            content += 'Type of Project: ' + document.getElementById('projectType').value + '\n\n';
+            content += 'Purpose of the Call: ' + document.getElementById('callPurpose').value + '\n\n';
+            content += 'Follow Up Email?: ' + document.getElementById('followUpEmail').value + '\n\n';
+            content += 'Next Steps: ' + document.getElementById('nextSteps').value + '\n\n';
+            content += 'Date for Next Follow Up: ' + document.getElementById('followUpDate').value + '\n\n';
+            content += 'Outcome of the Call: ' + document.getElementById('callOutcome').value;
+
+            var textarea = document.createElement("textarea");
+            textarea.value = content;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('Content copied to clipboard');
+        }
+        function refreshPage() {
+            window.location.reload();
+        }
+    </script>
+</body>
+</html>
